@@ -1,7 +1,5 @@
 import numpy as np
 
-from collections import Counter
-
 class Variable:
     def __init__(self, name, domain, size):
         '''Create a variable object, specifying its name (a
@@ -10,15 +8,9 @@ class Variable:
         self.name = name                #text name for variable
         self.dom = list(domain)         #Make a copy of passed domain
         self.size = size
-        self.evidence_index = 0         #evidence value (stored as index into self.dom)
-        self.assignment_index = 0       #For use by factors. We can assign variables values
-                                        #and these assigned values can be used by factors
-                                        #to index into their tables.
 
 class Factor:
     def __init__(self, name, scope, domain, values):
-        '''create a Factor object, specify the Factor name (a string)
-        and its scope (an ORDERED list of variable objects).'''
         self.scope = list(scope)
         self.name = name
         self.domain = domain
